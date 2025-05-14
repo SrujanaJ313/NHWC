@@ -33,7 +33,7 @@ function AppRoutes() {
                 </Route> */}
                 {/* <Route element={<Navigate replace to={isLoggedin ? "/msl-reference-list" : "/login"} />} path="*" />
                 <Route element={<LoginPage />} path="/login" /> */}
-                <Route element={<Registration />} path="/registration" />
+                <Route element={<Registration />} path="/" />
                 {/* <Route element={<Verification />} path="/verification" />
                 <Route element={<ForgotPwd />} path="/forgot-password" />
                 <Route element={<CreatePassword />} path="/reset-password" /> */}
