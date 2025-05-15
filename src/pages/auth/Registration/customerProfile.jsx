@@ -41,9 +41,30 @@ export default function CustomerProfile() {
   };
 
   return (
-    <Card className="rounded-2xl shadow-xl p-4">
+    <Card className="rounded-2xl shadow-xl" sx={{boxShadow:3}}>
       <CardContent>
-        <Typography variant="h5" gutterBottom>
+      <Box
+        component="fieldset"
+        sx={{
+          border: '1px solid lightgray',
+          borderRadius: 1,
+          p: isSmallScreen ? 1 : 3,
+          m: 0,
+          position: 'relative',
+        }}
+      >
+          <Typography
+          component="legend"
+          sx={{
+            px: 2,
+            fontSize: isSmallScreen ? '1rem' : '1.25rem',
+            color: '#ffffff',
+            fontWeight:'bold',
+            bgcolor: '#5c9ccc',
+            display: 'inline-block',
+            ml: isSmallScreen ? 1 : 2,
+          }}
+        >
           Customer Profile
         </Typography>
         <form onSubmit={formik.handleSubmit}>
@@ -106,7 +127,7 @@ export default function CustomerProfile() {
             </Box>
 
             <Box display="flex" flexDirection={isSmallScreen ? 'column' : 'row'} gap={2}>
-              <FormControl size="small" fullWidth={isSmallScreen} sx={{ flex: 1 }} error={!formik.values.gender}>
+              <FormControl size="small" fullWidth={isSmallScreen} sx={{ flex: 1 }} error={!!formik.values.gender}>
                 <InputLabel id="gender-label">Gender</InputLabel>
                 <Select
                   labelId="gender-label"
@@ -121,13 +142,16 @@ export default function CustomerProfile() {
                   <MenuItem value="female">Female</MenuItem>
                   <MenuItem value="other">Other</MenuItem>
                 </Select>
-                {!formik.values.gender && (
+                {!!formik.values.gender && (
                   <FormHelperText>Gender is required</FormHelperText>
                 )}
               </FormControl>
+              <FormControl size="small" fullWidth={isSmallScreen} sx={{ flex: 1 }}></FormControl>
+              <FormControl size="small" fullWidth={isSmallScreen} sx={{ flex: 1 }}></FormControl>
             </Box>
           </Stack>
         </form>
+        </Box>
       </CardContent>
     </Card>
   );
