@@ -59,7 +59,7 @@ export default function ContactInformation() {
       <Box
         component="fieldset"
         sx={{
-          border: '1px solid lightgray',
+          border: '1px solid #c5dbec',
           borderRadius: 1,
           p: isSmallScreen ? 1 : 3,
           m: 0,
@@ -71,9 +71,9 @@ export default function ContactInformation() {
           sx={{
             px: 2,
             fontSize: isSmallScreen ? '1rem' : '1.25rem',
-            color: '#ffffff',
+            color: '#2e6e9e',
             fontWeight:'bold',
-            bgcolor: '#5c9ccc',
+            bgcolor: '#dfeffc',
             display: 'inline-block',
             ml: isSmallScreen ? 1 : 2,
           }}
