@@ -4,8 +4,8 @@ import { Route, Routes } from "react-router-dom";
 // import ClaimantList from "../pages/claimantList";
 // import LoginPage from "../pages/auth/LoginPage"
 import Registration from "../pages/auth/Registration";
-import PersonalInformation from "../pages/auth/Registration/personalInformation";
-import CustomerInformation from "../pages/auth/Registration/customerInformation";
+// import PersonalInformation from "../pages/auth/Registration/personalInformation";
+// import CustomerInformation from "../pages/auth/Registration/customerInformation";
 // import Verification from "../pages/auth/Verification";
 // import { useEffect, useState } from 'react';
 // import Header from '../components/Header';
@@ -35,10 +35,8 @@ function AppRoutes() {
                 </Route> */}
         {/* <Route element={<Navigate replace to={isLoggedin ? "/msl-reference-list" : "/login"} />} path="*" />
                 <Route element={<LoginPage />} path="/login" /> */}
-        <Route element={<Registration />}>
-          <Route element={<CustomerInformation />} path="/" />
-          <Route element={<PersonalInformation />} path="personalInformation" />
-        </Route>
+        <Route element={<Registration />} path="/" />
+
         {/* <Route element={<Verification />} path="/verification" />
                 <Route element={<ForgotPwd />} path="/forgot-password" />
                 <Route element={<CreatePassword />} path="/reset-password" /> */}
