@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import {
   Typography,
   FormControl,
-  InputLabel,
+  // InputLabel,
   Select,
   MenuItem,
   Checkbox,
@@ -99,9 +99,9 @@ export default function PersonalInfo() {
                 <Typography sx={{ minWidth: isSmallScreen ? '100%' : 500 }}>{label}</Typography>
                 {isMulti ? (
                   <FormControl fullWidth size="small">
-                    <InputLabel id="race-label">{label}</InputLabel>
+                    {/* <InputLabel id="race-label">{label}</InputLabel> */}
                     <Select
-                      labelId="race-label"
+                      // labelId="race-label"
                       id="race"
                       multiple
                       value={formik.values.race}
@@ -121,14 +121,14 @@ export default function PersonalInfo() {
                   </FormControl>
                 ) : (
                   <FormControl size="small" fullWidth>
-                    <InputLabel id={`${id}-label`}>{label}</InputLabel>
+                    {/* <InputLabel id={`${id}-label`}>{label}</InputLabel> */}
                     <Select
-                      labelId={`${id}-label`}
+                      // labelId={`${id}-label`}
                       id={id}
                       name={id}
                       value={formik.values[id]}
                       onChange={formik.handleChange}
-                      label={label}
+                      // label={label}
                     >
                       <MenuItem value="">-- Select --</MenuItem>
                       {options.map((option) => (
