@@ -1,10 +1,19 @@
 import React, { useState } from "react";
 import CustomerInformation from "./customerInformation";
 import PersonalInformation from "./personalInformation";
-import { Button, Stack } from "@mui/material";
+import EmploymentInformation from "./employmentInformation";
+import {
+  Button,
+  Stack,
+  Typography,
+  useMediaQuery,
+  Box,
+  useTheme,
+} from "@mui/material";
 
 const STEPS = [
   {
+    label: "General Information",
     active: true,
     stepNumber: 0,
     // completionStatus: "N",
@@ -13,7 +22,7 @@ const STEPS = [
     component: CustomerInformation,
   },
   {
-    // label: "Fact Finding",
+    label: "Personal Information",
     active: false,
     stepNumber: 1,
     // completionStatus: "N",
@@ -21,15 +30,15 @@ const STEPS = [
     color: "black",
     component: PersonalInformation,
   },
-  // {
-  //   label: "Review Charging",
-  //   active: false,
-  //   stepNumber: 2,
-  //   completionStatus: "N",
-  //   bgColor: "white",
-  //   color: "black",
-  //   component: ReviewCharging,
-  // },
+  {
+    label: "Employment Information and History",
+    active: false,
+    stepNumber: 2,
+    // completionStatus: "N",
+    bgColor: "white",
+    color: "black",
+    component: EmploymentInformation,
+  },
   // {
   //   label: "Record Decision",
   //   active: false,
@@ -51,8 +60,10 @@ const STEPS = [
 ];
 
 function Registration() {
+  const theme = useTheme();
   const [steps, setSteps] = useState(STEPS);
   const [activeStep, setActiveStep] = useState(STEPS[0]);
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
 
   const handleNextNavigation = () => {
     const currentActiveStep = activeStep.stepNumber + 1;
@@ -96,31 +107,73 @@ function Registration() {
     setSteps(changedSteps);
   };
   return (
-    <>
-      <activeStep.component />
-      <Stack direction="row" justifyContent="space-between">
-        <Stack width="50%" alignItems="center">
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleBackNavigation}
-            disabled={activeStep?.stepNumber === 0}
-          >
-            Previous
-          </Button>
+    <Stack margin="1%">
+      <Box
+        component="fieldset"
+        sx={{
+          border: "1px solid lightgray",
+          borderRadius: 1,
+          p: isSmallScreen ? 1 : 3,
+          m: 0,
+          position: "relative",
+          display: "flex",
+          flexDirection: "column",
+          rowGap: 2,
+        }}
+      >
+        <Typography
+          component="legend"
+          sx={{
+            // px: 2,
+            fontSize: isSmallScreen ? "1rem" : "1.25rem",
+            color: "#ffffff",
+            fontWeight: "bold",
+            bgcolor: "#5c9ccc",
+            display: "inline-block",
+            // ml: isSmallScreen ? 1 : 2,
+            width: "100%",
+            textAlign: "center",
+          }}
+        >
+          {activeStep?.label}
+        </Typography>
+        <activeStep.component />
+        <Stack direction="row" justifyContent="space-between">
+          <Stack width="50%" alignItems="center">
+            <Button
+              onClick={handleBackNavigation}
+              disabled={activeStep?.stepNumber === 0}
+              style={{
+                border: "1px solid #c5dbec",
+                borderRadius: 1,
+                color: "#2e6e9e",
+                fontWeight: "bold",
+                backgroundColor: "#dfeffc",
+                padding: 5,
+              }}
+            >
+              Previous
+            </Button>
+          </Stack>
+          <Stack width="50%" alignItems="center">
+            <Button
+              onClick={handleNextNavigation}
+              disabled={activeStep?.stepNumber === 2}
+              style={{
+                border: "1px solid #c5dbec",
+                borderRadius: 1,
+                color: "#2e6e9e",
+                fontWeight: "bold",
+                backgroundColor: "#dfeffc",
+                padding: 5,
+              }}
+            >
+              Next
+            </Button>
+          </Stack>
         </Stack>
-        <Stack width="50%" alignItems="center">
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleNextNavigation}
-            disabled={activeStep?.stepNumber === 1}
-          >
-            Next
-          </Button>
-        </Stack>
-      </Stack>
-    </>
+      </Box>
+    </Stack>
   );
 }
 
