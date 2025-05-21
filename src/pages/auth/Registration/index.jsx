@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CustomerInformation from "./customerInformation";
 import PersonalInformation from "./personalInformation";
 import EmploymentInformation from "./employmentInformation";
+import Objectives from "./objectives";
 import {
   Button,
   Stack,
@@ -39,15 +40,15 @@ const STEPS = [
     color: "black",
     component: EmploymentInformation,
   },
-  // {
-  //   label: "Record Decision",
-  //   active: false,
-  //   stepNumber: 3,
-  //   completionStatus: "N",
-  //   bgColor: "white",
-  //   color: "black",
-  //   component: RecordDecision,
-  // },
+  {
+    label: "Objectives",
+    active: false,
+    stepNumber: 3,
+    // completionStatus: "N",
+    bgColor: "white",
+    color: "black",
+    component: Objectives,
+  },
   // {
   //   label: "End Date",
   //   active: false,
@@ -158,7 +159,7 @@ function Registration() {
           <Stack width="50%" alignItems="center">
             <Button
               onClick={handleNextNavigation}
-              disabled={activeStep?.stepNumber === 2}
+              disabled={activeStep?.stepNumber === 3}
               style={{
                 border: "1px solid #c5dbec",
                 borderRadius: 1,
