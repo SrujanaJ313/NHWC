@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import {
   Card,
@@ -16,9 +16,12 @@ import {
   Box,
   IconButton,
   InputAdornment,
-  TextField
+  TextField,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import CustomModal from "../../../../components/customModal/CustomModal";
+import DialogContent from "@mui/material/DialogContent";
+import SearchAction from "./SearchAction";
 
 export default function EmploymentObjectives() {
   const formik = useFormik({
@@ -27,19 +30,18 @@ export default function EmploymentObjectives() {
       jobDescription: "",
       workType: "",
       keyword: "",
+      searchTitle:""
     },
     onSubmit: (values) => {
       console.log(values);
     },
   });
 
+  const [editActionForm, setEditActionForm] = useState(false);
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
-  // const inputProps = {
-  //   size: "small",
-  //   fullWidth: true,
-  // };
+  const handleClose = () => setEditActionForm(false);
 
   return (
     <Card className="rounded-2xl shadow-xl" sx={{ boxShadow: 3 }}>
@@ -89,8 +91,11 @@ export default function EmploymentObjectives() {
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <IconButton edge="end" sx={{backgroundColor:"#dfeffc", borderRadius:0}}>
-                          <SearchIcon />
+                        <IconButton
+                          edge="end"
+                          sx={{ backgroundColor: "#dfeffc", borderRadius: 0 }}
+                        >
+                          <SearchIcon onClick={() => setEditActionForm(true)} />
                         </IconButton>
                       </InputAdornment>
                     ),
@@ -116,9 +121,12 @@ export default function EmploymentObjectives() {
                   sx={{ minWidth: 450 }}
                   InputProps={{
                     endAdornment: (
-                      <InputAdornment position="end" >
-                        <IconButton edge="end" sx={{backgroundColor:"#dfeffc", borderRadius:0}}>
-                          <SearchIcon />
+                      <InputAdornment position="end">
+                        <IconButton
+                          edge="end"
+                          sx={{ backgroundColor: "#dfeffc", borderRadius: 0 }}
+                        >
+                          <SearchIcon onClick={() => setEditActionForm(true)} />
                         </IconButton>
                       </InputAdornment>
                     ),
@@ -171,6 +179,30 @@ export default function EmploymentObjectives() {
                   sx={{ minWidth: 250 }}
                 />
               </Stack>
+              {editActionForm && (
+                <CustomModal
+                  open={editActionForm}
+                  onClose={handleClose}
+                  aria-labelledby="modal-modal-title"
+                  aria-describedby="modal-modal-description"
+                  title="ONET Entries"
+                  maxWidth={"lg"}
+                  titleBgColor="#183084"
+                  titleTextColor="white"
+                  closeIconColor="white"
+                >
+                  <DialogContent>
+                    <Stack
+                      width="100%"
+                      justifyContent="center"
+                      alignItems="center"
+                      mt={2}
+                    >
+                      <SearchAction formik={formik} handleClose={handleClose} />
+                    </Stack>
+                  </DialogContent>
+                </CustomModal>
+              )}
             </Stack>
           </form>
         </Box>
