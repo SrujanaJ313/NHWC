@@ -30,7 +30,7 @@ export default function EmploymentObjectives() {
       jobDescription: "",
       workType: "",
       keyword: "",
-      searchTitle:""
+      searchTitle: "",
     },
     onSubmit: (values) => {
       console.log(values);
@@ -61,9 +61,9 @@ export default function EmploymentObjectives() {
             sx={{
               px: 2,
               fontSize: isSmallScreen ? "1rem" : "1.25rem",
-              color: "#2e6e9e",
+              color: "#fff",
               fontWeight: "bold",
-              bgcolor: "#dfeffc",
+              bgcolor: "#004785",
               display: "inline-block",
               ml: isSmallScreen ? 1 : 2,
             }}
@@ -93,9 +93,17 @@ export default function EmploymentObjectives() {
                       <InputAdornment position="end">
                         <IconButton
                           edge="end"
-                          sx={{ backgroundColor: "#dfeffc", borderRadius: 0 }}
+                          sx={{
+                            backgroundColor: "#004785",
+                            borderRadius: 0,
+                            color: "#fff",
+                            "&:hover": {
+                              backgroundColor: "#004785",
+                            },
+                          }}
+                          onClick={() => setEditActionForm(true)}
                         >
-                          <SearchIcon onClick={() => setEditActionForm(true)} />
+                          <SearchIcon />
                         </IconButton>
                       </InputAdornment>
                     ),
@@ -124,9 +132,17 @@ export default function EmploymentObjectives() {
                       <InputAdornment position="end">
                         <IconButton
                           edge="end"
-                          sx={{ backgroundColor: "#dfeffc", borderRadius: 0 }}
+                          sx={{
+                            backgroundColor: "#004785",
+                            borderRadius: 0,
+                            color: "#fff",
+                            "&:hover": {
+                              backgroundColor: "#004785",
+                            },
+                          }}
+                          onClick={() => setEditActionForm(true)}
                         >
-                          <SearchIcon onClick={() => setEditActionForm(true)} />
+                          <SearchIcon />
                         </IconButton>
                       </InputAdornment>
                     ),

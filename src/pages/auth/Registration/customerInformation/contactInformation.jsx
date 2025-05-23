@@ -71,9 +71,9 @@ export default function ContactInformation() {
           sx={{
             px: 2,
             fontSize: isSmallScreen ? '1rem' : '1.25rem',
-            color: '#2e6e9e',
+            color: '#fff',
             fontWeight:'bold',
-            bgcolor: '#dfeffc',
+            bgcolor: '#004785',
             display: 'inline-block',
             ml: isSmallScreen ? 1 : 2,
           }}

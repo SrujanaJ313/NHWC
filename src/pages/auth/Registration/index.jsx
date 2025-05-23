@@ -3,6 +3,7 @@ import CustomerInformation from "./customerInformation";
 import PersonalInformation from "./personalInformation";
 import EmploymentInformation from "./employmentInformation";
 import Objectives from "./objectives";
+import Military from "./Military";
 import {
   Button,
   Stack,
@@ -27,7 +28,7 @@ const STEPS = [
     active: false,
     stepNumber: 1,
     // completionStatus: "N",
-    bgColor: "white",
+    bgColor: "#fff",
     color: "black",
     component: PersonalInformation,
   },
@@ -36,7 +37,7 @@ const STEPS = [
     active: false,
     stepNumber: 2,
     // completionStatus: "N",
-    bgColor: "white",
+    bgColor: "#fff",
     color: "black",
     component: EmploymentInformation,
   },
@@ -45,16 +46,25 @@ const STEPS = [
     active: false,
     stepNumber: 3,
     // completionStatus: "N",
-    bgColor: "white",
+    bgColor: "#fff",
     color: "black",
     component: Objectives,
+  },
+  {
+    label: "Military",
+    active: false,
+    stepNumber: 4,
+    completionStatus: "N",
+    bgColor: "#fff",
+    color: "black",
+    component: Military,
   },
   // {
   //   label: "End Date",
   //   active: false,
-  //   stepNumber: 4,
+  //   stepNumber: 5,
   //   completionStatus: "N",
-  //   bgColor: "white",
+  //   bgColor: "#fff",
   //   color: "black",
   //   component: EndDate,
   // },
@@ -97,7 +107,7 @@ function Registration() {
           ...step,
           active: false,
           // completionStatus: "Y",
-          bgColor: "white",
+          bgColor: "#fff",
           color: "black",
         };
       } else {
@@ -127,9 +137,9 @@ function Registration() {
           sx={{
             // px: 2,
             fontSize: isSmallScreen ? "1rem" : "1.25rem",
-            color: "#ffffff",
+            color: "#fff",
             fontWeight: "bold",
-            bgcolor: "#5c9ccc",
+            bgcolor: "#004785",
             display: "inline-block",
             // ml: isSmallScreen ? 1 : 2,
             width: "100%",
@@ -145,12 +155,12 @@ function Registration() {
               onClick={handleBackNavigation}
               disabled={activeStep?.stepNumber === 0}
               style={{
-                border: "1px solid #c5dbec",
+                border: "1px solid transparent",
                 borderRadius: 1,
-                color: "#2e6e9e",
+                color: "#fff",
                 fontWeight: "bold",
-                backgroundColor: "#dfeffc",
-                padding: 5,
+                backgroundColor: "#004785",
+                padding: 5
               }}
             >
               Previous
@@ -159,13 +169,13 @@ function Registration() {
           <Stack width="50%" alignItems="center">
             <Button
               onClick={handleNextNavigation}
-              disabled={activeStep?.stepNumber === 3}
+              disabled={activeStep?.stepNumber === 4}
               style={{
-                border: "1px solid #c5dbec",
+                border: "1px solid transparent",
                 borderRadius: 1,
-                color: "#2e6e9e",
+                color: "#fff",
                 fontWeight: "bold",
-                backgroundColor: "#dfeffc",
+                backgroundColor: "#004785",
                 padding: 5,
               }}
             >

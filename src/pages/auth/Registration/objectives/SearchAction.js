@@ -70,17 +70,12 @@ const mockDataArray = Array(10)
   .fill()
   .flatMap(() => [...mockData]);
 
-const SearchAction = ({formik, handleClose}) => {
+const SearchAction = ({ formik, handleClose }) => {
   return (
     <Stack width="100%" justifyContent="center" alignItems="center" mt={2}>
       <Stack width="100%" justifyContent="center" alignItems="center" mt={2}>
-        <Stack
-          direction={"row"}
-          spacing={2}
-          alignItems="center"
-          padding={1}
-        >
-          <Typography sx={{ minWidth:150 }}>
+        <Stack direction={"row"} spacing={2} alignItems="center" padding={1}>
+          <Typography sx={{ minWidth: 150 }}>
             Please Enter Occupation
           </Typography>
           <TextField
@@ -95,9 +90,17 @@ const SearchAction = ({formik, handleClose}) => {
                 <InputAdornment position="end">
                   <IconButton
                     edge="end"
-                    sx={{ backgroundColor: "#dfeffc", borderRadius: 0 }}
+                    sx={{
+                      backgroundColor: "#004785",
+                      borderRadius: 0,
+                      color: "#fff",
+                      "&:hover": {
+                        backgroundColor: "#004785",
+                      },
+                    }}
+                    onClick={() => {}}
                   >
-                    <SearchIcon onClick={() => {}} />
+                    <SearchIcon />
                   </IconButton>
                 </InputAdornment>
               ),
@@ -134,8 +137,8 @@ const SearchAction = ({formik, handleClose}) => {
             </TableHead>
 
             <TableBody sx={{ overflow: "auto" }}>
-              {mockDataArray.map((data) => (
-                <TableRow key={data.title}>
+              {mockDataArray.map((data, index) => (
+                <TableRow key={`${data.title}_${index}`}>
                   <TableCell sx={{ borderRight: "2px solid #ccc" }}>
                     <Checkbox />
                   </TableCell>
@@ -155,16 +158,24 @@ const SearchAction = ({formik, handleClose}) => {
                   position: "sticky",
                   zIndex: 1,
                   bottom: 0,
-                  backgroundColor: 'background.paper',
+                  backgroundColor: "background.paper",
                   // backgroundColor: "#dfeffc",
                 }}
               >
                 <TableCell colSpan={4}>
                   <Stack direction="row" spacing={1} justifyContent={"center"}>
-                    <Button variant="contained" size="small" onClick={handleClose}>
+                    <Button
+                      variant="contained"
+                      size="small"
+                      onClick={handleClose}
+                    >
                       Select
                     </Button>
-                    <Button variant="contained" size="medium" onClick={handleClose}>
+                    <Button
+                      variant="contained"
+                      size="medium"
+                      onClick={handleClose}
+                    >
                       Cancel
                     </Button>
                   </Stack>
