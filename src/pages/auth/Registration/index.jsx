@@ -4,6 +4,7 @@ import PersonalInformation from "./personalInformation";
 import EmploymentInformation from "./employmentInformation";
 import Objectives from "./objectives";
 import Military from "./Military";
+import Assistance from "./assistance";
 import {
   Button,
   Stack,
@@ -54,20 +55,20 @@ const STEPS = [
     label: "Military",
     active: false,
     stepNumber: 4,
-    completionStatus: "N",
+    // completionStatus: "N",
     bgColor: "#fff",
     color: "black",
     component: Military,
   },
-  // {
-  //   label: "End Date",
-  //   active: false,
-  //   stepNumber: 5,
-  //   completionStatus: "N",
-  //   bgColor: "#fff",
-  //   color: "black",
-  //   component: EndDate,
-  // },
+  {
+    label: "Public Assistance",
+    active: false,
+    stepNumber: 5,
+    // completionStatus: "N",
+    bgColor: "#fff",
+    color: "black",
+    component: Assistance,
+  },
 ];
 
 function Registration() {
@@ -169,7 +170,7 @@ function Registration() {
           <Stack width="50%" alignItems="center">
             <Button
               onClick={handleNextNavigation}
-              disabled={activeStep?.stepNumber === 4}
+              disabled={activeStep?.stepNumber === 5}
               style={{
                 border: "1px solid transparent",
                 borderRadius: 1,
@@ -179,7 +180,7 @@ function Registration() {
                 padding: 5,
               }}
             >
-              Next
+              {activeStep?.stepNumber === 5 ? "Submit Application" : "Next"}
             </Button>
           </Stack>
         </Stack>
